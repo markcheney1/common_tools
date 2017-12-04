@@ -13,19 +13,19 @@ func NewCache() *Cache {
 	return cache
 }
 
-func (tool *Cache) setCache(c map[uint64]interface{}) {
+func (tool *Cache) SetCache(c map[uint64]interface{}) {
 	tool.Lock()
 	defer tool.Unlock()
 	tool.data = c
 }
 
-func (tool *Cache) getCache() map[uint64]interface{} {
+func (tool *Cache) GetCache() map[uint64]interface{} {
 	tool.RLock()
 	defer tool.RUnlock()
 	return tool.data
 }
 
-func (tool *Cache) addCache(c map[uint64]interface{}) {
+func (tool *Cache) AddCache(c map[uint64]interface{}) {
 	tool.Lock()
 	defer tool.Unlock()
 	for k, v := range c {
@@ -33,7 +33,7 @@ func (tool *Cache) addCache(c map[uint64]interface{}) {
 	}
 }
 
-func (tool *Cache) deleteCache(c []uint64) {
+func (tool *Cache) DeleteCache(c []uint64) {
 	tool.Lock()
 	defer tool.Unlock()
 	for _, v := range c {
